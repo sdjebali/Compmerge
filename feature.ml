@@ -323,9 +323,17 @@ struct
       | (Reverse,Forward) -> 1
       | (Forward,Forward) -> if ((Pervasives.compare (t1.chrom) (t2.chrom))!=0) then Pervasives.compare t1.chrom t2.chrom else Pervasives.compare t1.gbeg t2.gbeg
       | (Reverse,Reverse) -> if ((Pervasives.compare (t1.chrom) (t2.chrom))!=0) then Pervasives.compare t1.chrom t2.chrom else Pervasives.compare t2.gend t1.gend
-      | (Forward,_) ->  -1
-      | (_,Reverse) -> 1
+      | (Forward,Unstranded) ->  -1
+      | (Unstranded,Forward) ->  1
+      | (Reverse,Unstranded) ->  -1
+      | (Unstranded,Reverse) ->  1
       | _ -> if ((Pervasives.compare (t1.chrom) (t2.chrom))!=0) then Pervasives.compare t1.chrom t2.chrom else Pervasives.compare t1.gbeg t2.gbeg  (* might not be the ideal thing to do, to refine later on if needed *)
+
+  (*
+those were removed on June 18th 2018 from the above function to make version 1.3
+| (Forward,_) ->  -1
+| (_,Reverse) -> 1
+   *)
 
   (* reports whether a transcript is monoexonic or not *)
   let monoex t = ((List.length t.exlist)==1)

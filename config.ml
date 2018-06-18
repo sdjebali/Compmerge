@@ -27,7 +27,7 @@ type 'a context_t =
 let context = 
   {	
     file = "";
-    maxnbseq=50;
+    maxnbseq=500;
     strmode=0; 
     outfile="";
     verbose=false;
@@ -39,7 +39,7 @@ let context =
 let usage = 
 " 
                      ********************************************          
-                     *   compmerge - version v1.3 (March 2012)  *
+                     *   compmerge - version v1.4 (June 2018)   *
                      *             Sarah Djebali                *
                      ********************************************
 
@@ -68,7 +68,7 @@ More precisely, this program merges spliced transcripts that:
                   -> default is unset.
 
    -s nbseq:      nbseq is an upper bound for the number of sequences you have in your input gff files.
-                  -> default is 50.
+                  -> default is 500.
 
    -so:           compmerge does not require the input file to be sorted, however this option enables to skip
                   the input file sorting in case this file is already sorted according to strand, chromosome, start, end. 
